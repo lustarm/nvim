@@ -8,6 +8,17 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+-- Override settings: 2 spaces for specific file types
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.expandtab = true
+  end,
+})
+
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
@@ -29,4 +40,3 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
-
